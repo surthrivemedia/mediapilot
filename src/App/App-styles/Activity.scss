@@ -1,0 +1,26 @@
+.activity-tab{
+    background: hsl(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    // justify-content: flex-end;
+    // align-items: center;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: flex-end;
+
+
+    .activity-container{
+        width: 300px;
+        background: white;
+        height: 80dvh;
+        margin-right: 2.5%;
+        margin-top: 6.25rem;
+        // margin-block: auto;
+        border-radius: 10px;
+        padding: 1rem;
+    }
+
+}

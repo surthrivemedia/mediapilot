@@ -1,0 +1,214 @@
+[
+  {
+    "section": "🧩 Basic Overview",
+    "questions": [
+      {
+        "type": "paragraph",
+        "question": "What is the main goal or mission of Media Pilot?"
+      },
+      {
+        "type": "short",
+        "question": "In one sentence, how would you describe what the platform does?"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Who are the primary users?",
+        "options": [
+          "Startups",
+          "Marketing agencies",
+          "Individual creators",
+          "Other (please specify)"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "question": "What specific problems does Media Pilot solve for users?"
+      },
+      {
+        "type": "paragraph",
+        "question": "What makes it different from other PR or media management platforms?"
+      }
+    ]
+  },
+  {
+    "section": "🎯 Core Features and Functions",
+    "questions": [
+      {
+        "type": "checkbox",
+        "question": "What key things should users be able to do on the platform?",
+        "options": [
+          "Schedule posts",
+          "Request radio ads",
+          "Monitor mentions",
+          "Manage campaigns",
+          "Other"
+        ]
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Should the platform support both social media and traditional media integrations?",
+        "options": [
+          "Yes",
+          "No",
+          "Not sure yet"
+        ]
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Should users be able to upload PR materials (e.g., press releases, jingles)?",
+        "options": [
+          "Yes",
+          "No"
+        ]
+      },
+      {
+        "type": "checkbox",
+        "question": "Which of these should be included in the MVP?",
+        "options": [
+          "Analytics dashboard",
+          "AI suggestions",
+          "Automated scheduling",
+          "Booking media outlets",
+          "Messaging system",
+          "Tiered plans"
+        ]
+      }
+    ]
+  },
+  {
+    "section": "💰 Payments & Monetization",
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "Will Media Pilot have subscription plans or pay-per-service options?",
+        "options": [
+          "Subscription",
+          "Pay-per-service",
+          "Both",
+          "Not yet decided"
+        ]
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Should payments be processed inside the app (e.g., Paystack, Stripe)?",
+        "options": [
+          "Yes",
+          "No"
+        ]
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Should invoices or receipts be auto-generated?",
+        "options": [
+          "Yes",
+          "No"
+        ]
+      }
+    ]
+  },
+  {
+    "section": "📊 Dashboard & Analytics",
+    "questions": [
+      {
+        "type": "checkbox",
+        "question": "What data should appear on a user’s dashboard?",
+        "options": [
+          "Campaign stats",
+          "Ad performance",
+          "Budget tracking",
+          "Other"
+        ]
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Should users be able to download or share reports?",
+        "options": [
+          "Yes",
+          "No"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "question": "If yes, what file formats should reports support (e.g., PDF, CSV)?"
+      }
+    ]
+  },
+  {
+    "section": "📱 Design & Experience",
+    "questions": [
+      {
+        "type": "paragraph",
+        "question": "Do you have a preferred color palette or branding style?"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Do you already have a logo or brand assets?",
+        "options": [
+          "Yes",
+          "No",
+          "In progress"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "question": "Are there existing apps/websites whose design you’d like to model?"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Should it be mobile-first or desktop-first?",
+        "options": [
+          "Mobile-first",
+          "Desktop-first",
+          "Both"
+        ]
+      }
+    ]
+  },
+  {
+    "section": "🌐 Media Integration",
+    "questions": [
+      {
+        "type": "checkbox",
+        "question": "Which social platforms should integrate first?",
+        "options": [
+          "Instagram",
+          "Facebook",
+          "X (Twitter)",
+          "LinkedIn",
+          "YouTube",
+          "TikTok",
+          "Other"
+        ]
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Should local media (radio, TV) have their own profiles or listings?",
+        "options": [
+          "Yes",
+          "No"
+        ]
+      }
+    ]
+  },
+  {
+    "section": "📅 Project Management",
+    "questions": [
+      {
+        "type": "multiple_choice",
+        "question": "Should it launch with an MVP (basic version) first?",
+        "options": [
+          "Yes",
+          "No"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "question": "What’s the expected launch timeline?"
+      },
+      {
+        "type": "paragraph",
+        "question": "Who will provide content (texts, images, media info)?"
+      }
+    ]
+  }
+]

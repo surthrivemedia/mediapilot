@@ -1,0 +1,303 @@
+.navbar{
+    position: fixed;
+    z-index: 1000;
+      top: 0;
+  width: 100%;
+  background: transparent;
+ transition: background 0.3s ease, box-shadow 0.3s ease;
+
+    .navbar-container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 95%;
+        padding-block: 1rem;
+        margin: 0 auto;
+
+        .logo-links{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            
+
+            .logo-container{
+                
+                img{
+                    width: 125px;
+                     filter: invert(1);
+                }
+                
+            }
+            
+            .links{
+                border-left: 1px solid hsl(0, 0%, 80%);
+                padding-inline: 1em;
+                padding-block: .75rem;
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+                
+                a{
+                    font-weight: 500;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: .5rem;
+                    color: white;
+
+                    &:hover{
+                        text-decoration: underline;
+                    }
+
+                }
+            }
+
+
+        }
+
+        .app{
+
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            button, a{
+                background: none;
+                padding: 10px 15px;
+                cursor: pointer;
+                font-weight: 500;
+                border-radius: 3px;
+                text-decoration: none;
+
+                &:nth-child(1){
+                    background: #b3001b;
+                    color: white;
+                    border: 1px solid transparent;
+                    transition: .2s ease;
+
+                    &:hover{
+                        background: hsl(351, 100%, 45%);
+                    }
+                }
+
+                &:nth-child(2){
+                    border: 1px solid hsl(0, 0%, 90%);
+                    transition: .2s ease;
+                    color: white;
+
+                    &:hover{
+                        background: hsl(351, 100%, 10%);
+                    }
+                }
+            }
+        }
+
+        .mobile-app{
+            display: none;
+        }
+    }
+
+    
+}
+
+.slide-menu {
+  position: fixed;
+  top: 0;
+  right: -100%; /* hidden */
+  width: 100%;
+  height: 100vh;
+
+  /* BLUR BACKGROUND */
+  backdrop-filter: blur(10px); 
+  background: rgba(255, 255, 255, 0.2);
+
+  transition: right 0.25s ease; /* <-- slide speed */
+  z-index: 2000;
+}
+
+.slide-menu.open {
+  right: 0;
+}
+
+.slide-menu-content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  height: 100%;
+  background: white;
+  width: 70%;
+  margin-left: auto; /* slide from right */
+  position: relative;
+  box-shadow: -3px 0 10px rgba(0,0,0,0.1);
+
+  a{
+    text-decoration: none;
+    color: #1e1e1e;
+    font-size: 1.1em;
+    margin-block: .25em;
+  }
+
+     .navbar-app{
+        margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid hsl(0, 0%, 85%);
+            display: flex;
+            flex-direction: column;
+            // align-items: center;
+            gap: .5rem;
+            text-align: center;
+
+            button{
+                background: none;
+                padding: 10px 15px;
+                cursor: pointer;
+                font-weight: 500;
+                border-radius: 3px;
+                text-decoration: none;
+
+                &:nth-child(1){
+                    background: #b3001b;
+                    color: white;
+                    border: 1px solid transparent;
+                    transition: .2s ease;
+
+                    &:hover{
+                        background: hsl(351, 100%, 45%);
+                    }
+                }
+
+                &:nth-child(2){
+                    border: 1.5px solid hsl(0, 0%, 90%);
+                    transition: .2s ease;
+                    color: #1e1e1e;
+
+                    &:hover{
+                        background: hsl(351, 100%, 95%);
+                        // color: white;
+                    }
+                }
+            }
+        }
+
+
+}
+
+/* Close icon */
+.close-btn {
+  font-size: 35px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 20px;
+}
+
+
+
+  .navbar-scrolled {
+  background: white; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  color: black; 
+
+    .navbar-container{
+
+        .logo-links{
+
+            .logo-container{
+                img{
+                    filter: invert(0);
+                }
+            }
+
+            .links{
+
+                a{
+                    color: #1e1e1e;
+                }
+            }
+        }
+
+        .app{
+
+            a{
+
+                &:nth-child(2){
+                    color: #b3001b;
+                    border: 1px solid #b3001b;
+
+                       &:hover{
+                        background: hsl(351, 100%, 97.5%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+.navbar{
+    width: 100%;
+    overflow: hidden;
+
+    .navbar-container{
+
+        .logo-links{
+
+            .links{
+                display: none;
+            }
+        }
+
+        .app{
+         display: none;
+        }
+
+        .mobile-app{
+            display: flex;
+            align-items: center;
+            // color: black;
+            gap: 1rem;
+            padding-inline-end: .5rem;
+
+             button, a{
+                background: none;
+                padding: 10px 15px;
+                cursor: pointer;
+                font-weight: 500;
+                border-radius: 3px;
+                text-decoration: none;
+
+                &:nth-child(1){
+                    background: #b3001b;
+                    color: white;
+                    border: 1px solid transparent;
+                    transition: .2s ease;
+
+                    &:hover{
+                        background: hsl(351, 100%, 45%);
+                    }
+                }
+
+
+            }
+
+            .menu-btn{
+                color: white;
+                font-size: 30px;
+                  
+            }
+        }
+    }
+}
+
+.navbar-scrolled{
+        .navbar-container{
+           .mobile-app{
+
+            .menu-btn{
+                color: #1e1e1e;
+            }
+
+           }
+    }
+}
+}
