@@ -63,7 +63,7 @@ const joinWaitlist = () =>{
     "/", "/marketplace", "/store", "/address", "/userMasterclass", "/userDashboard",
     "/adminHome", "/adminNotifications", "/post", "/orders", "/cart", "/userProfile",
     "/notifications", "/uploads", "/onboarding", "/profilePic", "/editAddress",
-    "/myorders", "/gethelp", "/editprofile", "/adminlog", '/login', '/signup', '/masterclass', '/about', '/contact','/reset', '/shop', '/shop/*', "/masterclass/enroll" , "/waitlist"
+    "/myorders", "/gethelp", "/editprofile", "/adminlog", '/login', '/signup', '/masterclass', '/about', '/contact','/reset', '/shop', '/shop/*', "/masterclass/enroll" , "/waitlist", "/bookings"
   ];
 
   const shouldHideComponent =
@@ -95,6 +95,7 @@ const joinWaitlist = () =>{
             <NavLink> <p>Contact Us</p> </NavLink>
             <NavLink> <p>Pricing</p>  </NavLink>
             <NavLink> <p>Careers</p></NavLink>
+            <NavLink to="/bookings"> <p>Bookings</p></NavLink>
           </div>
 
         </div>
@@ -132,6 +133,7 @@ const joinWaitlist = () =>{
           <NavLink to="/contact">Contact</NavLink>
           <NavLink to="/pricing">Pricing</NavLink>
           <NavLink to="/careers">Careers</NavLink>
+          <NavLink to="/bookings"> <p>Bookings</p></NavLink>
 
           <div className="navbar-app">
             <button  onClick={startDemo}>Try the demo</button>

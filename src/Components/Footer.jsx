@@ -51,7 +51,7 @@ function Footer() {
       "/", "/marketplace", "/store", "/address", "/userMasterclass", "/userDashboard",
       "/adminHome", "/adminNotifications", "/post", "/orders", "/cart", "/userProfile",
       "/notifications", "/uploads", "/onboarding", "/profilePic", "/editAddress",
-      "/myorders", "/gethelp", "/editprofile", "/adminlog", '/login', '/signup', '/masterclass', '/about', '/contact','/reset', '/shop', '/shop/*', "/masterclass/enroll", "/waitlist"
+      "/myorders", "/gethelp", "/editprofile", "/adminlog", '/login', '/signup', '/masterclass', '/about', '/contact','/reset', '/shop', '/shop/*', "/masterclass/enroll", "/waitlist", "/bookings"
     ];
   
     const shouldHideComponent =
@@ -73,6 +73,7 @@ function Footer() {
               
               <div className="bar 1">
                 <h3>Popular services</h3>
+                <NavLink to="/bookings">Photo and Video Coverage</NavLink>
                 <NavLink>Plan Media and Communication Strategy</NavLink>
                 <NavLink>Manage PR Campaigns</NavLink>
                 <NavLink>Request Interviews</NavLink>
