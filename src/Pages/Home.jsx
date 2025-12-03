@@ -182,6 +182,35 @@ const startDemo = () => {
     navigate('/demo');
   };
 
+const joinWaitlist = () =>{
+  navigate("/waitlist")
+}  
+
+const goToWhatWeDo = () => {
+  const section = document.getElementById("whatwedo");
+  const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+
+  const offset = window.innerHeight / 1.8 - section.offsetHeight / 2;
+
+  window.scrollTo({
+    top: sectionTop - offset,
+    behavior: "smooth",
+  });
+};
+
+const goToServices = () => {
+  const section = document.getElementById("services");
+  const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+
+  const offset = window.innerHeight / 1.8 - section.offsetHeight / 2;
+
+  window.scrollTo({
+    top: sectionTop - offset,
+    behavior: "smooth",
+  });
+};
+
+
 
   return (
     <div className='home'>
@@ -199,7 +228,7 @@ const startDemo = () => {
 
           <div className="next">
           <button  onClick={startDemo}>Get a demo</button>
-          <button>Learn More</button>
+          <button onClick={goToWhatWeDo}>Learn More</button>
           </div>
 
 
@@ -209,7 +238,7 @@ const startDemo = () => {
 
 
 
-        <section className="what-we-do">
+        <section className="what-we-do" id="whatwedo">
 
           <div className="left">
 
@@ -234,7 +263,7 @@ const startDemo = () => {
 
                     <p>MediaPilot helps you plan your media strategy, create your press materials, manage your campaigns, and track your credibility — all in one place.</p>
 
-                    <button>View Services</button>
+                    <button onClick={goToServices}>View Services</button>
                 </div>
 
                 <div className="bottom">
@@ -259,6 +288,30 @@ const startDemo = () => {
 
         </section>
 
+        <section className="services-section" id='services'>
+    
+
+          <div className="services-grid">
+              <div className="services-left">
+            <p className="label">Our Services</p>
+            <h2>The Problems<br />African Businesses Face</h2>
+            <p className="subtitle">
+            And how MediaPilot helps solve them.  
+            </p>
+          </div>
+
+            {services.map((item, index) => (
+              <div className="service-card" key={index}>
+                <div className="icon">{item.icon}</div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+                <button>
+                  Learn More <span>›</span>
+                </button>
+              </div>
+            ))}
+          </div>
+        </section>
 
         <section className="why-edufor-section">
             <div className="why-edufor-container">
@@ -306,56 +359,28 @@ const startDemo = () => {
             </div>
         </section>
 
-
-
-    <section className="services-section">
- 
-
-      <div className="services-grid">
-           <div className="services-left">
-        <p className="label">Our Services</p>
-        <h2>The Problems<br />African Businesses Face</h2>
-        <p className="subtitle">
-        And how MediaPilot helps solve them.  
-        </p>
-      </div>
-
-        {services.map((item, index) => (
-          <div className="service-card" key={index}>
-            <div className="icon">{item.icon}</div>
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-            <button>
-              Learn More <span>›</span>
-            </button>
+        <section className="features">
+          <div className="features-left">
+            <h1>Powerful Tools<br/>To Grow Your Visibility.</h1>
+            <button>Get Started</button>
           </div>
-        ))}
-      </div>
-    </section>
 
+          <div className="features-right">
+            <h3 className="label">Features</h3>
 
-    <section className="features">
-      <div className="features-left">
-        <h1>Powerful Tools<br/>To Grow Your Visibility.</h1>
-        <button>Get Started</button>
-      </div>
-
-      <div className="features-right">
-        <h3 className="label">Features</h3>
-
-        <div className="features-grid">
-          {features.map((item, i) => (
-            <div className="feature-card" key={i}>
-              <div className="icon">{item.icon}</div>
-              <div className="details">
-                <h4>{item.title}</h4>
-                <p>Simple tools that help you plan, manage and track your media work.</p>
-              </div>
+            <div className="features-grid">
+              {features.map((item, i) => (
+                <div className="feature-card" key={i}>
+                  <div className="icon">{item.icon}</div>
+                  <div className="details">
+                    <h4>{item.title}</h4>
+                    <p>Simple tools that help you plan, manage and track your media work.</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
+          </div>
+        </section>
 
 
   <section className="howitworks">
@@ -473,7 +498,7 @@ const startDemo = () => {
 
            <div className="app">
               <button  onClick={startDemo}>Get a demo</button>
-              <button>Join the waitlist</button>
+              <button onClick={joinWaitlist} >Join the waitlist</button>
           </div>
 
       </div>

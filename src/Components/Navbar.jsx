@@ -41,7 +41,6 @@ function Navbar() {
 const goToHome = () => navigate("/");
 
 
-  const navClass = scrolled ? 'navbar navbar-scrolled' : 'navbar';
 
   //hide nav at certain paths
   const location = useLocation();
@@ -49,6 +48,10 @@ const goToHome = () => navigate("/");
   const startDemo = () => {
     navigate('/demo');
   };
+  
+const joinWaitlist = () =>{
+  navigate("/waitlist")
+}  
 
   const hiddenPaths = [
     "/login",
@@ -60,18 +63,22 @@ const goToHome = () => navigate("/");
     "/", "/marketplace", "/store", "/address", "/userMasterclass", "/userDashboard",
     "/adminHome", "/adminNotifications", "/post", "/orders", "/cart", "/userProfile",
     "/notifications", "/uploads", "/onboarding", "/profilePic", "/editAddress",
-    "/myorders", "/gethelp", "/editprofile", "/adminlog", '/login', '/signup', '/masterclass', '/about', '/contact','/reset', '/shop', '/shop/*', "/masterclass/enroll" 
+    "/myorders", "/gethelp", "/editprofile", "/adminlog", '/login', '/signup', '/masterclass', '/about', '/contact','/reset', '/shop', '/shop/*', "/masterclass/enroll" , "/waitlist"
   ];
 
   const shouldHideComponent =
   hiddenPaths.includes(location.pathname) ||
   (!allPaths.includes(location.pathname) && !location.pathname.startsWith("/shop/"));
 
+   const isWaitlistPage = location.pathname === "/waitlist";
 
   return (
     <div style={{ display: shouldHideComponent ? "none" : "block" }}>
 
-   <div className={navClass}>
+   <div  className={`navbar 
+        ${scrolled ? "navbar-scrolled" : ""} 
+        ${isWaitlistPage ? "navbar-waitlist" : ""}
+      `}>
       
       <div className="navbar-container">
 
@@ -94,7 +101,7 @@ const goToHome = () => navigate("/");
 
           <div className="app">
               <button  onClick={startDemo}>Get a demo</button>
-              <NavLink>Join the waitlist</NavLink>
+              <NavLink to="/waitlist">Join the waitlist</NavLink>
           </div>
 
           <div className="mobile-app">
@@ -128,7 +135,8 @@ const goToHome = () => navigate("/");
 
           <div className="navbar-app">
             <button  onClick={startDemo}>Try the demo</button>
-            <button>Join the Waitlist</button>
+
+            <NavLink  to="/waitlist"  onClick={closeMenu}>Join the Waitlist</NavLink>
           </div>
 
         </div>

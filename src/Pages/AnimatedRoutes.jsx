@@ -23,6 +23,7 @@ import Help from "../App/App-pages/Help";
 import Businesses from "../Admin/Admin-pages/Businesses";
 import Activity from "../App/App-components/Activity";
 import DemoExperience from "./DemoExperience";
+import Waitlist from "./Waitlist";
 
 function AnimatedRoutes() {
       const location = useLocation();
@@ -44,6 +45,7 @@ function AnimatedRoutes() {
         <Route path="/services" element={<Services />}/>
         <Route path="/careers" element={<Careers />}/>
         <Route path="/demo" element={<DemoExperience />}/>
+        <Route path="/waitlist" element={<Waitlist />}/>
         {/*  */}
 
         {/* auth pages */}

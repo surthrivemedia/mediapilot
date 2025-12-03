@@ -1,0 +1,131 @@
+/* Styling for the subscribe block */
+.subscribe-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px; /* Limit size for readability */
+}
+
+/* Original input/button container */
+.sub-button {
+    display: flex;
+    gap: .5rem;
+    // border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sub-button input {
+    flex-grow: 1;
+    padding: 12px 20px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: transparent;
+    border: 1px solid #888;
+    border-radius: 5px;
+    color: white;
+
+    &::placeholder{
+        color: white;
+    }
+}
+
+.sub-button button {
+    background-color: #b3001b; /* Your brand color */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 5px;
+}
+
+.sub-button button:hover:not(:disabled) {
+    background-color: #900016;
+}
+
+.sub-button button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Status Messages */
+.status-message {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.status-message.success {
+    background-color: #d1fae5;
+    color: #059669;
+}
+
+.status-message.error {
+    background-color: #fee2e2;
+    color: #ef4444;
+}
+
+.waitlist-container{
+         background: rgba(0, 0, 0, 0.5) url('../../stock/backgrounds/waitlist.jpg')no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            position: relative;
+            height: 100dvh;
+            width: 100%;
+
+        
+            display: flex;
+             align-items: center;
+            justify-content: center; 
+          
+            padding: 40px;
+            color: white;
+            
+            .waitlist-container-content{
+                margin-top: 4rem;
+                     display: flex;
+                flex-direction: column;
+                gap: 1rem;padding-bottom: 40px;
+                line-height: 1.5;
+             align-items: center;
+            justify-content: center; 
+
+            .join-head{
+                border: 1px solid #888;
+                border-radius: 20px;
+                padding: 6.5px 15px;
+                font-size: .9em;
+            }
+
+            h1{
+                font-size: 50px;
+                text-align: center;
+            }
+
+            p{
+                text-align: center;
+            }
+            }
+}
+
+.subscribe-block .socials{
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                justify-content: center;
+                padding-top: 1rem;
+                
+                a{
+                    cursor: pointer;
+                    color: white;
+                    padding: 5px;
+                }
+                
+}
