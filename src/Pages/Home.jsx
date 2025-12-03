@@ -261,7 +261,7 @@ const goToServices = () => {
                 <div className="top">
                     <h1>What we do</h1>
 
-                    <p>MediaPilot helps you plan your media strategy, create your press materials, manage your campaigns, and track your credibility — all in one place.</p>
+                    <p>MediaPilot helps you plan your media strategy, create your press materials, manage your campaigns, and track your credibility all in one place.</p>
 
                     <button onClick={goToServices}>View Services</button>
                 </div>

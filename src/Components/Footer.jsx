@@ -74,7 +74,7 @@ function Footer() {
               <div className="bar 1">
                 <h3>Popular services</h3>
                 <NavLink>Plan Media and Communication Strategy</NavLink>
-                <NavLink>Manage PR Campaings</NavLink>
+                <NavLink>Manage PR Campaigns</NavLink>
                 <NavLink>Request Interviews</NavLink>
                 <NavLink>Access Verified Media Directories</NavLink>
               </div>
