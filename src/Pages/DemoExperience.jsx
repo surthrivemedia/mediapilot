@@ -50,7 +50,7 @@ const features = [
   { icon: <FileText size={20} />, title: "Press Generator", desc: "AI-guided releases, jingles & briefs." },
   { icon: <Users size={20} />, title: "Verified Directory", desc: "Access journalists & influencers." },
   { icon: <PieChart size={20} />, title: "Impact Analytics", desc: "Track credibility & campaign results." },
-  { icon: <MessageCircle size={20} />, title: "Advisor Support", desc: "Chat with Surthrive Media experts." },
+  { icon: <MessageCircle size={20} />, title: "Advisor Support", desc: "Chat with Surthrive Media experts" },
 ];
 
 export default function Onboarding() {
