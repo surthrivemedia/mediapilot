@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { FaInstagram, FaTwitter, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { txtdb } from "../firebase-config";
+import emailjs from "emailjs-com";
 
 
 function Bookings() {
@@ -11,9 +12,10 @@ function Bookings() {
   const [selectedTime, setSelectedTime] = useState(null);
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [isForSelf, setIsForSelf] = useState(true);
   const [otherName, setOtherName] = useState('');
-  const [venue, setVenue] = useState('Lagos, Nigeria');
+  const [venue, setVenue] = useState('');
   const [coverageType, setCoverageType] = useState('mobile');
   const [total, setTotal] = useState(20999);
 
@@ -31,10 +33,14 @@ function Bookings() {
   ];
 
   const coverageOptions = [
-    { value: 'mobile', label: 'Mobile Coverage', available: true },
-    { value: 'video', label: 'Video Coverage', available: true },
+    { value: 'mobile', label: 'Mobile Coverage (Pictures & Videos) + Highlight Reel (Short Recap Video)', available: true },
     { value: 'drone', label: 'Drone Coverage', available: false },
-    { value: 'photography', label: 'Photography Coverage', available: false },
+    { value: 'photography', label: 'Pro Photography Coverage', available: false },
+    { value: 'social_content', label: 'Social Media Content (Reels, Clips, BTS)', available: true },
+    { value: 'video', label: 'Pro Video Coverage', available: false },
+
+
+
   ];
 
   useEffect(() => {
@@ -66,6 +72,92 @@ function Bookings() {
   const handleCall = () => {
     window.location.href = 'tel:+1234567890'; // Replace with actual support number
   };
+
+  const isFormValid = () => {
+  if (!selectedDate) return false;
+  if (!selectedTime) return false;
+  if (!name.trim()) return false;
+  if (!email.trim()) return false;
+  if (!phone.trim()) return false;
+
+  // If booking for someone else, otherName must be filled
+  if (!isForSelf && !otherName.trim()) return false;
+
+  if (!venue.trim()) return false;
+  if (!coverageType.trim()) return false;
+
+  return true;
+};
+
+
+  const handlePaystackPayment = () => {
+      if (!isFormValid()) {
+    alert("Please fill all fields before making payment.");
+    return;
+  }
+  const paystackPublicKey = "pk_live_6b6b34b728c2107403298995f0b342599ea6358f";
+
+  const handler = window.PaystackPop.setup({
+    key: paystackPublicKey,
+    email: email,             // user email
+    amount: total * 100,      // total already calculated
+    currency: 'NGN',
+    callback: function(response) {
+      // payment successful
+      handleCheckout(response.reference);
+    },
+    onClose: function() {
+      alert("Payment was not completed");
+    }
+  });
+
+  handler.openIframe();
+};
+
+const handleCheckout = async (reference) => {
+  try {
+    const bookingData = {
+      date: selectedDate?.toDateString(),
+      time: selectedTime,
+      name: isForSelf ? name : otherName,
+      phone,
+      email,
+      forSelf: isForSelf,
+      venue,
+      coverageType,
+      total,
+      paid: true,
+      reference,
+      timestamp: new Date()
+    };
+
+    await addDoc(collection(txtdb, 'bookings'), bookingData);
+
+    // ---- SEND EMAIL RECEIPT ----
+    emailjs.send(
+      "service_ycbpbtj",
+      "template_ge0j6wt",
+      {
+        name: bookingData.name,
+        email: bookingData.email,
+        date: bookingData.date,
+        time: bookingData.time,
+        coverageType: bookingData.coverageType,
+        venue: bookingData.venue,
+        total: bookingData.total.toLocaleString(),
+        reference: bookingData.reference
+      },
+      "_PonQ_5Hbas6gVfNq"
+    );
+
+    alert('Payment successful! Your booking receipt has been emailed.');
+  } catch (error) {
+    console.error('Error saving booking:', error);
+    alert('Failed to save booking.');
+  }
+};
+
+
 
   return (
     <div className='bookings'>
@@ -157,7 +249,14 @@ function Bookings() {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
+            <input
+                type="email"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                />
           {!isForSelf && (
+
             <input
               type="text"
               placeholder="Name of the Person"
@@ -199,6 +298,7 @@ function Bookings() {
             type="text"
             value={venue}
             onChange={(e) => setVenue(e.target.value)}
+            placeholder="Specific location in lagos only"
           />
           <small>Currently available in Lagos only</small>
         </div>
@@ -206,9 +306,10 @@ function Bookings() {
           <span>Total Amount</span>
           <span>₦{total.toLocaleString()}</span>
         </div>
-        <button className="proceed-btn" onClick={handleSubmit}>
-          Proceed to Pay
+        <button className="proceed-btn" onClick={handlePaystackPayment}>
+        Proceed to Pay
         </button>
+
         <div className="call-section">
           <p>Or call to make the reservation</p>
           <button className="call-btn" onClick={handleCall}>

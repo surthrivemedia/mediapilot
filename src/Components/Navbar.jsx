@@ -129,11 +129,11 @@ const joinWaitlist = () =>{
             onClick={closeMenu}
           />
 
-          <NavLink to="/services">Services</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
-          <NavLink to="/pricing">Pricing</NavLink>
-          <NavLink to="/careers">Careers</NavLink>
-          <NavLink to="/bookings"> <p>Bookings</p></NavLink>
+          <NavLink to="/">Services</NavLink>
+          <NavLink to="/">Contact</NavLink>
+          <NavLink to="/">Pricing</NavLink>
+          <NavLink to="/">Careers</NavLink>
+          <NavLink to="/bookings" onClick={closeMenu}> <p>Bookings</p></NavLink>
 
           <div className="navbar-app">
             <button  onClick={startDemo}>Try the demo</button>
