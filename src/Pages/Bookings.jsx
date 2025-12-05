@@ -298,9 +298,9 @@ const handleCheckout = async (reference) => {
             type="text"
             value={venue}
             onChange={(e) => setVenue(e.target.value)}
-            placeholder="Specific location in lagos only"
+         placeholder="Enter the exact location, city, and state"
           />
-          <small>Currently available in Lagos only</small>
+          {/* <small>Currently available in Lagos only</small> */}
         </div>
         <div className="total">
           <span>Total Amount</span>
