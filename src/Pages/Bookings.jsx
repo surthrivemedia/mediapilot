@@ -19,6 +19,9 @@ function Bookings() {
   const [coverageType, setCoverageType] = useState('mobile');
   const [total, setTotal] = useState(20999);
 
+  const [packageType, setPackageType] = useState("basic");
+
+
   const dates = [];
   const today = new Date(2025, 11, 3); // December 03, 2025 (months are 0-indexed)
   for (let i = 0; i < 7; i++) {
@@ -32,6 +35,55 @@ function Bookings() {
     '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM'
   ];
 
+  const packageOptions = [
+  {
+    value: "basic",
+    label: "₦50,000 — Basic Package (Good)",
+    price: 50000,
+    details: [
+      "3 hours shoot",
+      "Mobile video + photos",
+      "1 highlight video (30–45s)",
+      "10–15 edited photos",
+      "Basic color correction",
+      "Delivery in 48 hours"
+    ]
+  },
+  {
+    value: "standard",
+    label: "₦75,000 — Standard Package (Better)",
+    price: 75000,
+    details: [
+      "Up to 5 hours / half-day shoot",
+      "Mobile video + photos",
+      "Highlight video (45–60s)",
+      "1 extra social clip (10–15s)",
+      "20–30 edited photos",
+      "Better color grading",
+      "48–72 hours delivery",
+      "One free revision"
+    ]
+  },
+  {
+    value: "premium",
+    label: "₦100,000 — Premium Package (Best)",
+    price: 100000,
+    details: [
+      "Full-day shoot",
+      "Mobile video + photos",
+      "1 highlight video (1min+)",
+      "2 short videos (Reels/TikTok)",
+      "30–40 edited photos",
+      "Advanced color grading",
+      "Smooth transitions",
+      "24–48 hours delivery",
+      "Two revisions",
+      "Priority editing"
+    ]
+  }
+];
+
+
   const coverageOptions = [
     { value: 'mobile', label: 'Mobile Coverage (Pictures & Videos) + Highlight Reel (Short Recap Video)', available: true },
     { value: 'drone', label: 'Drone Coverage', available: false },
@@ -43,10 +95,11 @@ function Bookings() {
 
   ];
 
-  useEffect(() => {
-    // Update total if needed, but for now fixed per slot
-    setTotal(20999);
-  }, [coverageType]);
+useEffect(() => {
+  const selectedPkg = packageOptions.find(pkg => pkg.value === packageType);
+  setTotal(selectedPkg.price);
+}, [packageType]);
+
 
   const handleSubmit = async () => {
     try {
@@ -115,8 +168,8 @@ function Bookings() {
 };
 
 const handleCheckout = async (reference) => {
-  try {
-    const bookingData = {
+      try {
+      const bookingData = {
       date: selectedDate?.toDateString(),
       time: selectedTime,
       name: isForSelf ? name : otherName,
@@ -125,11 +178,14 @@ const handleCheckout = async (reference) => {
       forSelf: isForSelf,
       venue,
       coverageType,
+      packageType,
+      packageDetails: packageOptions.find(pkg => pkg.value === packageType)?.details,
       total,
       paid: true,
       reference,
       timestamp: new Date()
     };
+
 
     await addDoc(collection(txtdb, 'bookings'), bookingData);
 
@@ -144,11 +200,14 @@ const handleCheckout = async (reference) => {
         time: bookingData.time,
         coverageType: bookingData.coverageType,
         venue: bookingData.venue,
+        packageType: bookingData.packageType,
+        packageDetails: bookingData.packageDetails.join(", "),
         total: bookingData.total.toLocaleString(),
         reference: bookingData.reference
       },
       "_PonQ_5Hbas6gVfNq"
     );
+
 
     alert('Payment successful! Your booking receipt has been emailed.');
   } catch (error) {
@@ -275,7 +334,38 @@ const handleCheckout = async (reference) => {
 
       <div className="right-panel">
         <h2>Booking Details</h2>
-        <div className="coverage-selector">
+
+          <div className="coverage-selector">
+        <label>Select Package</label>
+        <select
+          value={packageType}
+          onChange={(e) => setPackageType(e.target.value)}
+        >
+          {packageOptions.map((pkg) => (
+            <option key={pkg.value} value={pkg.value}>
+              {pkg.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {packageOptions.find(pkg => pkg.value === packageType) && (
+      <div className="package-details">
+        <h3>Package Details</h3>
+        <ul>
+          {packageOptions
+            .find(pkg => pkg.value === packageType)
+            .details.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+        </ul>
+      </div>
+    )}
+
+
+
+{/*  */}
+        {/* <div className="coverage-selector">
           <label>Select Coverage Type</label>
           <select
             value={coverageType}
@@ -291,7 +381,8 @@ const handleCheckout = async (reference) => {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
+        {/*  */}
         <div className="venue-editor">
           <label>Venue</label>
           <input
