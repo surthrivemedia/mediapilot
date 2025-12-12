@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { FaInstagram, FaTwitter, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { txtdb } from "../firebase-config";
 import emailjs from "emailjs-com";
@@ -241,12 +242,24 @@ const handleCheckout = async (reference) => {
       Call to book
     </button>
 
-    <div className={`social-slide ${showLinks ? "show" : ""}`}>
-      <a href="https://instagram.com/yourlink" target="_blank"><FaInstagram /></a>
-      <a href="https://x.com/yourlink" target="_blank"><FaTwitter /></a>
-      <a href="https://linkedin.com/yourlink" target="_blank"><FaLinkedin /></a>
-      <a href="https://wa.me/yourNumber" target="_blank"><FaWhatsapp /></a>
-    </div>
+      <div className={`social-slide ${showLinks ? "show" : ""}`}>
+        <a href="https://www.instagram.com/chiomaezenwafor?igsh=MWZyYjhyaHVzZ2J6eA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
+          <FaInstagram />
+        </a>
+
+        <a href="https://x.com/chiomaezenwafo?s=21" target="_blank" rel="noopener noreferrer">
+          <FaXTwitter  />
+        </a>
+
+        <a href="https://www.linkedin.com/in/chiomaezenwafor?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer">
+          <FaLinkedin />
+        </a>
+
+        <a href="https://wa.me/message/RJTA5DU4I2HEG1" target="_blank" rel="noopener noreferrer">
+          <FaWhatsapp />
+        </a>
+      </div>
+
   </div>
 </div>
 
